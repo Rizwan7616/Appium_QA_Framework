@@ -1,0 +1,8 @@
+{
+  "platformName": "Android",
+  "appium:automationName": "UiAutomator2",
+  "appium:deviceName": "Android Emulator",
+  "appium:appPackage": "com.rizwan.mobiletestapp",
+  "appium:appActivity": "com.rizwan.mobiletestapp.MainActivity",
+  "appium:noReset": false
+}

@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Android Mobile QA Suite" verbose="1">
+  <test name="Mobile Test App">
+    <classes>
+      <class name="com.rizwan.mobiletests.LoginTests"/>
+      <class name="com.rizwan.mobiletests.NavigationTests"/>
+      <class name="com.rizwan.mobiletests.ProfileTests"/>
+    </classes>
+  </test>
+</suite>
