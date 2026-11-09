@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Starts an Appium 2 server, runs the Maven/TestNG suite against the device that is
+# Starts an Appium server, runs the Maven/TestNG suite against the device that is
 # already attached (emulator or phone), then always stops Appium again.
 #
 # Usage (repo root):  bash scripts/run-appium-tests.sh
@@ -21,10 +21,13 @@ echo "Attached devices:"
 adb devices
 
 if ! command -v appium >/dev/null 2>&1; then
-  echo "Installing Appium 2 and the UiAutomator2 driver"
-  npm install -g appium@2
+  echo "Installing Appium and the UiAutomator2 driver"
+  # Unpinned on purpose: the current driver requires the current server, and a pinned old server is rejected.
+  npm install -g appium
 fi
 appium driver list --installed 2>&1 | grep -q uiautomator2 || appium driver install uiautomator2
+echo "Appium version: $(appium --version)"
+appium driver list --installed 2>&1 || true
 
 appium --address 127.0.0.1 --port "$PORT" --log-no-colors > "$ROOT/appium.log" 2>&1 &
 APPIUM_PID=$!
